@@ -1,0 +1,26 @@
+# render.yaml
+# This file configures the deployment of your Atlas-MD bot on Render.
+# You will need to add your environment variables in the Render dashboard.
+
+services:
+  - type: web
+    name: atlas-md
+    env: node
+    plan: free
+    buildCommand: "npm install --legacy-peer-deps"
+    startCommand: "npm start"
+    healthCheckPath: /
+    envVars:
+      - key: PORT
+        value: 10000
+      # You need to add the following environment variables in the Render dashboard
+      # under the "Environment" tab for your service:
+      #
+      # - MONGODB: Your MongoDB connection string.
+      # - SESSION_ID: A random string for your session.
+      # - PREFIX: The prefix for your bot's commands (e.g., -).
+      # - MODS: Your WhatsApp number(s) as mods.
+      # - OPENAI_API: Your OpenAI API key (optional).
+      # - TENOR_API_KEY: Your Tenor API key (optional).
+      # - PACKNAME: The name for your sticker packs.
+      # - AUTHOR: The author name for your sticker packs.
